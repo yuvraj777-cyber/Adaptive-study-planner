@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adaptive Study Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
 
+    <div class="container">
+        <h1>Adaptive Study Planner</h1>
+
+        <form method="POST">
+
+            <label>Name</label>
+            <input type="text" name="name" required>
+
+            <label>Subject</label>
+            <input type="text" name="subject" required>
+
+            <label>Study Hours</label>
+            <input type="number" name="study_hours" required>
+
+            <label>Quiz Score (%)</label>
+            <input type="number" name="quiz_score" required>
+
+            <label>Number of Mistakes</label>
+            <input type="number" name="mistakes" required>
+
+            <button type="submit">Generate Plan</button>
+
+        </form>
+
+        {% if recommendation %}
+        <div class="result">
+            <h2>Recommended Plan</h2>
+
+            <ul>
+                {% for item in recommendation %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
